@@ -15,6 +15,3 @@ def shop_receipt():
     basket = extract_shop_basket(request.form.to_dict())
     return render_template('receipt.html', basket=basket)
 
-
-if __name__ == '__main__':
-    app.run()
