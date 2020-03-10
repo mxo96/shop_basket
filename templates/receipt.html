@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Receipt</title>
+    </head>
+    <body>
+        {% for product in basket.products%}
+            <p>{{ product.name }}: {{ product.taxed_price }}</p>
+        {% endfor %}
+        <p>Sales Taxes: {{basket.sales_tax}}</p>
+        <p>Total: {{basket.total}}</p>
+    </body>
+</html>
