@@ -17,7 +17,7 @@ class TestExtractBasket(TestCase):
         self.assertEqual(12.49, result.taxed_price)
 
     @patch("utils.extract_basket.create_product_with_tax")
-    def test_extract_shop_basket(self, mock_create_product):
+    def test_extract_shop_basket_should_return_basket_object(self, mock_create_product):
         mock_product = Mock(spec=Product, taxed_price=12.49, tax=0)
         mock_create_product.return_value = mock_product
 
