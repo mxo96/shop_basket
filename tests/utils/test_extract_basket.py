@@ -16,8 +16,11 @@ class TestExtractBasket(TestCase):
         self.assertEqual(0, result.tax)
         self.assertEqual(12.49, result.taxed_price)
 
-    @patch("items.product.Product", spec=Product, return_value=Mock())
-    def test_extract_shop_basket(self, mock_product):
+    @patch("utils.extract_basket.create_product_with_tax")
+    def test_extract_shop_basket(self, mock_create_product):
+        mock_product = Mock(spec=Product, taxed_price=12.49, tax=0)
+        mock_create_product.return_value = mock_product
+
         test_products_from_form = {"product": "book|book|12.49"}
         result = extract_shop_basket(test_products_from_form)
         self.assertEqual(12.49, result.total)
